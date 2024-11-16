@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    PUBLIC_BACKEND_PORT: process.env.PUBLIC_BACKEND_PORT,
+  }
 };
 
 export default nextConfig;

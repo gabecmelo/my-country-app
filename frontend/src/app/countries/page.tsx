@@ -1,5 +1,6 @@
 "use client";
 
+require('dotenv').config();
 import { useEffect, useState } from "react";
 import CountryItem from "@/components/CountryItem";
 import Loading from "@/components/Loading";
@@ -11,7 +12,8 @@ function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/countries");
+        const BACKEND_PORT = process.env.PUBLIC_BACKEND_PORT || 3000;
+        const response = await fetch(`http://localhost:${BACKEND_PORT}/countries`);
         const data = await response.json();
         setCountries(data);
       } catch (error) {
