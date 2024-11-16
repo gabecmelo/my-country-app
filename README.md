@@ -1,5 +1,7 @@
 # My Country App
 
+[![Screenshot-from-2024-11-15-22-58-02.png](https://i.postimg.cc/9Qz0m2Xb/Screenshot-from-2024-11-15-22-58-02.png)](https://postimg.cc/tsQpkLxn)
+
 A web application built using **NestJS** on the backend and **Next.js** on the frontend, allowing users to explore country information, including borders, flags, and population data.
 
 ## Table of Contents
