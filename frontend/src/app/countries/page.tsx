@@ -27,7 +27,7 @@ function Page() {
   return loading ? (
     <Loading />
   ) : (
-    <div className="flex flex-col w-2/6 bg-zinc-300 text-center p-5 max-sm:w-full">
+    <div className="flex flex-col w-full bg-zinc-300 text-center p-5 max-sm:w-full">
       <h1 className="text-3xl">Countries</h1>
       {countries.map((country) => (
         <CountryItem

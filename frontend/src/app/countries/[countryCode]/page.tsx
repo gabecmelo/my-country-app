@@ -27,7 +27,6 @@ function Page() {
       try {
         const response = await fetch(`http://localhost:3000/countries/${countryCode}`);
         const text = await response.text();
-        console.log(text);
         const data = JSON.parse(text);
         setCountry(data);
         setLoading(false);
@@ -44,13 +43,13 @@ function Page() {
   if (!country) return <>Countries Data is not available</>;
 
   return (
-    <div className="bg-zinc-300 p-3 flex flex-col text-center w-1/2 max-sm:w-full">
-      <h1 className="text-3xl m-2">{country.name}</h1>
-      <div className='flex items-center justify-center w-full'>
-      <Image width={450} height={450} src={country.flagUrl} alt={`${country.name} flag`} />
+    <div className="bg-zinc-300 p-3 flex flex-col items-center justify-center min-h-screen w-full overflow-x-hidden max-sm:overflow-x-hidden">
+      <h1 className="text-3xl m-2 text-center">{country.name}</h1>
+      <div className='flex items-center justify-center w-full mb-4'>
+        <Image width={450} height={450} src={country.flagUrl} alt={`${country.name} flag`} />
       </div>
-      <div className="mt-6 flex flex-col items-center">
-        <h2 className="text-2xl mb-4">Population Over Time:</h2>
+      <div className="mt-6 flex flex-col items-center w-full">
+        <h2 className="text-2xl mb-4 text-center">Population Over Time:</h2>
         <ResponsiveContainer width="90%" height={400}>
           <LineChart
             data={country.historicalPopulationCounts}
@@ -65,8 +64,8 @@ function Page() {
         </ResponsiveContainer>
       </div>
 
-      <div>
-        <h2 className="text-2xl mt-4">Countries Bordering:</h2>
+      <div className="mt-6 w-full">
+        <h2 className="text-2xl mb-4 text-center">Countries Bordering:</h2>
         {country.borders.map((borderingCountry) => (
           <CountryItem
             key={`${borderingCountry.countryCode} - ${borderingCountry.commonName}`}
