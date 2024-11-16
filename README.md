@@ -138,4 +138,4 @@ The backend uses **Axios** for making HTTP requests to the external APIs.
 
 ## Known Issues
 
-- I tried but the **environment variables** weren't functioning correctly, so it wasn not possible to configure the *backend* and *frontend* PORTs correctly. This needs to be fixed for a more robust experience.
+- I tried, but the **environment variables** weren't functioning correctly, so it was not possible to configure the *backend* and *frontend* PORTs correctly. This needs to be fixed for a more robust experience (I was running out of time ;-; ).
