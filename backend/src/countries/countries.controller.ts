@@ -9,7 +9,7 @@ export class CountriesController {
     return this.countriesService.findAll();
   }
 
-  @Get('country/:countryCode')
+  @Get('countries/:countryCode')
   findCountryInfo(@Param('countryCode') countryCode: string) {
     return this.countriesService.findCountryInfo(countryCode);
   }
