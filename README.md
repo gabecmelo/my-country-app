@@ -11,6 +11,7 @@ A web application built using **NestJS** on the backend and **Next.js** on the f
 - [API Integration Issues](#api-integration-issues)
 - [Frontend Implementation](#frontend-implementation)
 - [Backend Implementation](#backend-implementation)
+- [Using env Files](#using-env-files)
 - [Known Issues](#known-issues)
 
 ---
@@ -53,11 +54,20 @@ A web application built using **NestJS** on the backend and **Next.js** on the f
 
    ```bash
    npm install
-   Start the backend server:
-   npm run start
    ```
 
-The backend will be available at `http://localhost:3000`.
+3. Add a PUBLIC_BACKEND_PORT on backend `.env` file:
+   ```bash
+    # /backend/.env
+
+    PUBLIC_BACKEND_PORT=3000
+   ```
+4. Start the backend server:
+   ```bash
+   npm run start:dev
+   ```
+
+The backend will be available at `http://localhost:<your_backend_env_port>`.
 
 ### Frontend (Next.js)
 
@@ -73,13 +83,21 @@ The backend will be available at `http://localhost:3000`.
    npm install
    ```
 
+3. Add a PUBLIC_BACKEND_PORT on frontend `.env` file:
+   ```bash
+    # /backend/.env
+
+    PUBLIC_BACKEND_PORT=3000
+   ```
+
 3. Start the frontend server:
 
    ```bash
-   npm run dev
-   
+   npm run dev   
    ```
-The frontend will be available at `http://localhost:3001`.
+The frontend will be available at `http://localhost:3001` by default, you can change it on `package.json`.
+
+You can see more about `.env` configuration on: [Using env Files](#using-env-files)
 
 ## API Integration Issues
 
@@ -138,6 +156,46 @@ The backend uses **Axios** for making HTTP requests to the external APIs.
 
 ---
 
+## Using env Files
+
+This project uses environment variables to configure both the backend and frontend. Here's how to set them up:
+
+#### Backend (.env)
+Create a `.env` file in the backend root directory and include the following:
+
+   ```bash
+   PUBLIC_BACKEND_PORT=your_backend_port_here
+   ```
+  
+#### Frontend (.env)
+Create a `.env` file in the frontend root directory and include the following:
+
+   ```bash
+   PUBLIC_BACKEND_PORT=your_backend_port_here
+   ```
+
+#### Running Frontend on a Different Port
+
+To run the frontend on a different port (e.g., `3001`), update the `package.json` file in the frontend directory:
+
+   ```bash
+   "scripts": {
+     "dev": "next dev -p 3001",
+     ...
+   }
+   ```
+Then start the frontend server using:
+
+   ```bash
+   npm run dev
+   ``` 
+
+This setup ensures the frontend and backend communicate correctly   and allows for easy configuration via `.env` files.
+
+---
+
 ## Known Issues
 
-- I tried, but the **environment variables** weren't functioning correctly, so it was not possible to configure the *backend* and *frontend* PORTs correctly. This needs to be fixed for a more robust experience (I was running out of time ;-; ).
+Some countries may not be available or their data may not display correctly due to country code mismatches between the APIs. For example:
+
+- **Venezuela** is represented by different codes in different APIs ("VE" in Nager.Date and "VEN" in Countries & Cities API). This causes data fetch issues for such countries.
